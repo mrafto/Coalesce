@@ -4,12 +4,12 @@ This guide will help you deploy the Coalesce Discord Music Bot on a Pterodactyl 
 
 ## Features of This Egg
 
-- ✅ Automatic Git cloning from GitHub
+- ✅ Automatic Git cloning from GitHub (https://github.com/mrafto/Coalesce)
+- ✅ Uses version-controlled install script from repository
 - ✅ Automatic dependency installation (npm packages, FFmpeg, yt-dlp)
 - ✅ TypeScript compilation support
 - ✅ Automatic command deployment on startup
 - ✅ Optional auto-update on restart
-- ✅ Support for private repositories
 - ✅ Multiple Node.js versions (18, 20, 21, 22)
 
 ## Prerequisites
@@ -75,10 +75,7 @@ After creating the server, go to the server's page and navigate to **"Startup"**
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `GUILD_ID` | Discord server ID for instant command deployment | (empty) |
-| `AUTO_UPDATE` | Pull latest changes on startup | `0` |
-| `BRANCH` | Git branch to use | `main` |
-| `USERNAME` | Git username for private repos | (empty) |
-| `ACCESS_TOKEN` | Personal access token for private repos | (empty) |
+| `AUTO_UPDATE` | Pull latest changes from GitHub on startup (1 = enabled, 0 = disabled) | `0` |
 
 #### Where to Find Discord Credentials
 
@@ -161,20 +158,19 @@ After creating the server, go to the server's page and navigate to **"Startup"**
 - Update `DISCORD_TOKEN` in panel
 - Restart the server
 
+## How Installation Works
+
+The egg file automatically downloads and executes [`install.sh`](https://github.com/mrafto/Coalesce/blob/main/install.sh) from the GitHub repository during installation. This script:
+
+1. Installs system dependencies (FFmpeg, Python, etc.)
+2. Clones the bot repository
+3. Installs yt-dlp for YouTube downloads
+4. Installs npm packages
+5. Builds the TypeScript project
+
+This approach ensures the installation script is always up-to-date with the latest version from the repository.
+
 ## Advanced Configuration
-
-### Using a Private Repository
-
-If you're using a private fork:
-
-1. **Generate a Personal Access Token**:
-   - GitHub: Settings → Developer settings → Personal access tokens → Generate new token
-   - Grant "repo" permissions
-
-2. **Configure Variables**:
-   - `USERNAME`: Your GitHub username
-   - `ACCESS_TOKEN`: The token you generated
-   - `GIT_ADDRESS`: Your private repository URL
 
 ### Auto-Update on Restart
 
@@ -184,13 +180,6 @@ To pull the latest changes every time the bot restarts:
 2. Restart the bot
 
 **Warning**: This will overwrite any manual changes made to files!
-
-### Custom Branch
-
-To use a different branch (e.g., development):
-
-1. Set `BRANCH` to your desired branch name
-2. Reinstall or restart the bot
 
 ## Docker Image Versions
 
@@ -272,7 +261,6 @@ To change the Node.js version:
 2. **Use environment variables** - Don't hardcode credentials
 3. **Regenerate tokens if compromised** - Get a new token immediately
 4. **Limit bot permissions** - Only grant necessary Discord permissions
-5. **Use private repos for sensitive data** - Keep custom configurations private
 
 ## License
 

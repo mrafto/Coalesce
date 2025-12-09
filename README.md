@@ -181,6 +181,7 @@ Deploy Coalesce on a Pterodactyl or Pelican game server panel:
 
 4. **Start**
    - Start the server and monitor console for `Bot is ready!`
+   - The egg automatically downloads and runs [`install.sh`](install.sh) for setup
 
 For detailed instructions, see [PTERODACTYL_SETUP.md](PTERODACTYL_SETUP.md)
 
