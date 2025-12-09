@@ -161,8 +161,6 @@ async function fetchTranscript(
         consistencyTokenJars: [],
       },
     },
-    params:
-      "CgskezVhcDhwTlNlRRIOQ2dBU0FtVnVHZ0ElM0QYASozZW5nYWdlbWVudC1wYW5lbC1zZWFyY2hhYmxlLXRyYW5zY3JpcHQtc2VhcmNoLXBhbmVsMAE4AUAB",
     externalVideoId: videoId,
   });
 
