@@ -162,6 +162,28 @@ docker stop coalesce-bot
 docker rm coalesce-bot
 ```
 
+## Pterodactyl/Pelican Panel Deployment
+
+Deploy Coalesce on a Pterodactyl or Pelican game server panel:
+
+1. **Import the Egg**
+   - Download `egg-coalesce.json` from this repository
+   - In panel admin area, go to Nests → Import Egg
+   - Upload the egg file
+
+2. **Create Server**
+   - Create a new server using the imported egg
+   - Allocate at least 512MB RAM and 1GB disk space
+
+3. **Configure**
+   - Set `DISCORD_TOKEN` and `CLIENT_ID` in Startup variables
+   - Optionally set `GUILD_ID` for instant command deployment
+
+4. **Start**
+   - Start the server and monitor console for `Bot is ready!`
+
+For detailed instructions, see [PTERODACTYL_SETUP.md](PTERODACTYL_SETUP.md)
+
 ## Project Structure
 
 ```
