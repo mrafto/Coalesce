@@ -11,8 +11,9 @@ echo ""
 
 # Install system dependencies
 echo "[1/6] Installing system dependencies..."
-apt update > /dev/null 2>&1
-apt install -y git curl jq file unzip make gcc g++ python3 python3-pip ffmpeg > /dev/null 2>&1
+export DEBIAN_FRONTEND=noninteractive
+apt update
+apt install -y git curl jq file unzip make gcc g++ python3 python3-pip ffmpeg
 echo "✓ System dependencies installed"
 
 # Create server directory
@@ -36,14 +37,14 @@ echo "✓ Repository ready"
 # Install yt-dlp
 echo ""
 echo "[3/6] Installing yt-dlp..."
-python3 -m pip install --upgrade yt-dlp > /dev/null 2>&1
+python3 -m pip install --upgrade yt-dlp
 echo "✓ yt-dlp installed"
 
 # Install node modules
 echo ""
 echo "[4/6] Installing npm packages..."
 if [ -f package.json ]; then
-    npm install --quiet
+    npm install
     echo "✓ npm packages installed"
 else
     echo "⚠ No package.json found"

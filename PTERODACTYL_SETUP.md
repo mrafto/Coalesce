@@ -5,7 +5,7 @@ This guide will help you deploy the Coalesce Discord Music Bot on a Pterodactyl 
 ## Features of This Egg
 
 - ✅ Automatic Git cloning from GitHub (https://github.com/mrafto/Coalesce)
-- ✅ Uses version-controlled install script from repository
+- ✅ Embedded installation script for reliability
 - ✅ Automatic dependency installation (npm packages, FFmpeg, yt-dlp)
 - ✅ TypeScript compilation support
 - ✅ Automatic command deployment on startup
@@ -160,15 +160,15 @@ After creating the server, go to the server's page and navigate to **"Startup"**
 
 ## How Installation Works
 
-The egg file automatically downloads and executes [`install.sh`](https://github.com/mrafto/Coalesce/blob/main/install.sh) from the GitHub repository during installation. This script:
+The egg file contains an embedded installation script that runs during server creation. This script:
 
 1. Installs system dependencies (FFmpeg, Python, etc.)
-2. Clones the bot repository
+2. Clones the bot repository from https://github.com/mrafto/Coalesce
 3. Installs yt-dlp for YouTube downloads
 4. Installs npm packages
 5. Builds the TypeScript project
 
-This approach ensures the installation script is always up-to-date with the latest version from the repository.
+You can view the installation process in [`install.sh`](https://github.com/mrafto/Coalesce/blob/main/install.sh) for reference.
 
 ## Advanced Configuration
 
